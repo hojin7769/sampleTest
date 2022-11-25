@@ -1,22 +1,42 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
 </script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-  <router-view></router-view>
-</template>
+  <q-layout view="hHh lpR fFf">
 
+    <q-header elevated class="bg-primary text-white" height-hint="98">
+      <q-toolbar align="left">
+        <q-toolbar-title>
+          my-first-site
+        </q-toolbar-title>
+      </q-toolbar>
+
+      <q-tabs align="left">
+        <q-route-tab to="/" label="Page One" />
+        <q-route-tab to="/about" label="Page Two" />
+        <q-route-tab to="/chart" label="Page Three" />
+        <q-route-tab to="/chart1" label="Page chart" />
+      </q-tabs>
+    </q-header>
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+    <q-footer elevated class="bg-grey-8 text-white">
+      <q-toolbar>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+          </q-avatar>
+          <div>Title</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
+
+  </q-layout>
+</template>
 <style scoped>
 .logo {
   height: 6em;

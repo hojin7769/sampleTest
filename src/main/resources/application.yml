@@ -1,0 +1,7 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://my-first-data.cqbc7kn1r1su.ap-northeast-2.rds.amazonaws.com:3306/sample
+    username: admin
+    password: 12341234
+    driver-class-name: com.mysql.jdbc.Driver

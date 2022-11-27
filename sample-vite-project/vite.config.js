@@ -13,7 +13,10 @@ export default defineConfig({
   ],
   build: {
     outDir: '../src/main/resources/static',
-    cssCodeSplit: true,
-    assetsDir: 'static'
+    indexPath: '../static/index.html',
+    cssCodeSplit: true
+  },
+  server: {
+    proxy: 'http://localHost:8080'
   }
 })

@@ -287,3 +287,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,intellij+all,eclipse,macos,gradle,java,vuejs,vue
+/src/main/resources/static/assets/
+/src/main/resources/static/index.html
+/src/main/resources/static/vite.svg

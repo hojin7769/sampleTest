@@ -1,3 +1,19 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  error:
+    include-exception: false # Response 에 Exception 을 표시할지
+    include-stacktrace: never # Response 에 Stack Trace 를 표시할지 (never | always | on_param) on_trace_params 은 deprecated
+    whitelabel:
+      enabled: false  # 에러 발생 시 Spring 기본 에러 페이지 노출 여부
+    tomcat:
+      max-swallow-size: -1
+      max-http-form-post-size: 20MB
 
 spring:
   datasource:
@@ -5,3 +21,50 @@ spring:
     username: admin
     password: 12341234
     driver-class-name: com.mysql.jdbc.Driver
+
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 2
+      max-lifetime: 600000
+
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+  web:
+    resources:
+      static-locations:
+        - file:src/main/resources/static/
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 120MB
+
+logging:
+  config: classpath:log4j2.xml
+  pattern:
+    #    console: '%d{HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(${PID:- }){magenta} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(%4.4line){yellow} %clr(:){faint} %m%n'
+    #    console: '%d{HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:%5p} ${PID:- } [%15.15t] %-40.40logger{39} %4.4line : %m%n'
+    console: '%d{HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:%5p} ${PID:- } [%15.15t] %logger %4.4line : %m%n'
+  level:
+    root: DEBUG
+    "[sun.rmi]": INFO
+    "[javax.management.remote.rmi]": INFO
+    "[jdk.event.security]": INFO
+    org:
+      springframework: INFO
+      "[springframework.web]": DEBUG
+      "[springframework.jdbc]": DEBUG
+      "[springframework.security.web.access]": DEBUG
+      "[springframework.security.web.csrf]": DEBUG
+      thymeleaf:
+        TemplateEngine: INFO
+      apache:
+        catalina: INFO
+        tomcat: INFO
+        coyote:
+          http11: INFO
+    com:
+      "[zaxxer.hikari.pool.HikariPool]": INFO
+      "[zaxxer.hikari.HikariConfig]": INFO
+      "[microsoft.sqlserver.jdbc]": INFO

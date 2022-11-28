@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.15.6",
+    "axios": "^1.2.0",
     "chart.js": "^3.9.1",
     "glob": "^8.0.3",
     "path": "^0.12.7",

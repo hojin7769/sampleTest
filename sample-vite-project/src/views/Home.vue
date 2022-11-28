@@ -3,10 +3,13 @@
     <div class="rouletter-bg"><div class="rouletter-wacu"></div></div>
     <div class="rouletter-arrow"></div>
     <button class="rouletter-btn">start</button>
+    {{result}}
   </div>
 </template>
 
 <script setup>
+import axios from 'axios'
+import { ref } from 'vue'
 var rouletter = {
   // 부여할 숫자 랜덤으로 하기
   random: function () {
@@ -44,6 +47,13 @@ document.addEventListener('click', function (e) {
       : rouletter.stop()
   }
 })
+const result = ref()
+const tt = () => {
+  axios.post('/api/test').then(res => {
+    result.value = res
+    console.log('qwe')
+  })
+}
 
 </script>
 

@@ -9,7 +9,8 @@ const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/about', name: 'about', component: About },
   { path: '/chart', name: 'chart', component: ChartAbout },
-  { path: '/chart1', name: 'chart1', component: ChartLine }
+  { path: '/chart1', name: 'chart1', component: ChartLine },
+  { path: '/pieChart', name: 'pieChart', component: () => import('../views/PieChart.vue'), props: true }
 ]
 
 // create history

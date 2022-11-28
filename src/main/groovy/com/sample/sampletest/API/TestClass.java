@@ -14,7 +14,7 @@ public class TestClass {
     @PostMapping("/test")
     public String testMethod(@RequestBody(required = false) Map<String,Object> map){
 
-        return "test";
+        return "12341234";
 
     }
 }

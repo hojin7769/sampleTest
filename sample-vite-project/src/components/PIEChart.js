@@ -1,20 +1,20 @@
 import { defineComponent, h } from 'vue'
 
-import { Bar } from 'vue-chartjs'
+import { Bar, Pie } from 'vue-chartjs'
 
 import { Chart, registerables } from 'chart.js'
 
 Chart.register(...registerables)
 
 export default defineComponent({
-  name: 'BarChart',
+  name: 'PieChart',
   components: {
-    Bar
+    Pie
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'pie-chart'
     },
     width: {
       type: Number,
@@ -31,26 +31,17 @@ export default defineComponent({
     styles: {
       type: Object,
       default: () => {}
+    },
+    dataset: {
+      type: Object,
+      default: () => {
+      }
     }
   },
   setup (props) {
     const chartData = {
-      labels: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July'
-      ],
-      datasets: [
-        {
-          label: 'Data One',
-          backgroundColor: '#f87979',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-        }
-      ],
+      labels: props.dataset.labels,
+      datasets: props.dataset.datasets,
       options: {
         plugins: {
           datalabels: {
@@ -64,12 +55,11 @@ export default defineComponent({
 
               // addComma() 는 여기서 기술하지 않았지만, 천단위 세팅. ChartJS 의 data 엔 숫자만 입력
 
-              return context.chart.data.labels[idx] + value
+              return context.chart.data.labels[idx]
             }
           }
         }
       }
-
     }
 
     const chartOptions = {
@@ -78,15 +68,14 @@ export default defineComponent({
     }
 
     return () =>
-      h(Bar, {
+      h(Pie, {
         chartData,
         chartOptions,
         chartId: props.chartId,
         width: props.width,
         height: props.height,
         cssClasses: props.cssClasses,
-        styles: props.styles,
-        plugins: props.plugins
+        styles: props.styles
       })
   }
 })

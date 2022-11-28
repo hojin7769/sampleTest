@@ -1,5 +1,6 @@
 package com.sample.sampletest.service.impl;
 
+import com.sample.sampletest.DVO.ChartMngDetailVO;
 import com.sample.sampletest.DVO.ChartMngVO;
 import com.sample.sampletest.service.ChartMngService;
 import org.hibernate.Transaction;
@@ -37,16 +38,20 @@ public class ChartMngServiceImpl implements ChartMngService {
         spq.setParameter("CHART_ID",id);
         spq.execute();
 
-
-//        System.out.println(spq.getOutputParameterValue("result"));
-
-
        ChartMngVO chartMngVO = (ChartMngVO) spq.getSingleResult();
 
-
-
-
-
         return chartMngVO;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ChartMngDetailVO detail(String id) {
+        StoredProcedureQuery spq = entityManager.createNamedStoredProcedureQuery("ChartMngVO.Select_Chart_Detail");
+
+        spq.setParameter("CHART_ID",id);
+        spq.execute();
+
+        ChartMngDetailVO vo = (ChartMngDetailVO) spq.getSingleResult();
+        return vo;
     }
 }

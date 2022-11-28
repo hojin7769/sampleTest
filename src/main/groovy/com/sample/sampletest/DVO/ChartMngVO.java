@@ -10,11 +10,19 @@ import javax.persistence.*;
 
 @NamedStoredProcedureQuery(
         name = "ChartMngVO.Select_Chart", //쿼리 이름
-        procedureName = "dbo.DZZPR_CHARTMNG_SELECT", //데이터베이스의 저장 프로시저명
+        procedureName = "DZZPR_CHARTMNG_SELECT", //데이터베이스의 저장 프로시저명
         parameters = { //저장 프로시저의 매개변수와 일치하는 매개변수 목록
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "CHART_ID"),
         },
         resultClasses =ChartMngVO.class
+)
+@NamedStoredProcedureQuery(
+        name = "ChartMngVO.Select_Chart_Detail",
+        procedureName = "DZZPR_CHART_DETAIL_SELECT",
+        parameters = { //저장 프로시저의 매개변수와 일치하는 매개변수 목록
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "CHART_ID"),
+        },
+        resultClasses =ChartMngDetailVO.class
 )
 @Entity
 @Data
@@ -49,4 +57,6 @@ public class ChartMngVO {
     }
 
     public static final String Select_Chart =  "DZZPR_CHARTMNG_SELECT";
+
+    public static final String Select_Chart_Detail =  "DZZPR_CHART_DETAIL_SELECT";
 }

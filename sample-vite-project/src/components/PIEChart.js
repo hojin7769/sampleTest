@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue'
 
-import { Bar, Pie } from 'vue-chartjs'
+import { Pie, Bar, Line, Bubble, PolarArea, Doughnut, Radar, Scatter } from 'vue-chartjs'
 
 import { Chart, registerables } from 'chart.js'
 

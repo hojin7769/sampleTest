@@ -8,7 +8,7 @@
 import PieChart from '../components/PIEChart'
 import { reactive, ref } from 'vue'
 import axios from 'axios'
-import { Pie, Bar } from 'vue-chartjs'
+import { Pie, Bar, Line, Bubble, PolarArea, Doughnut, Radar, Scatter } from 'vue-chartjs'
 
 const data = ref()
 const type = ref(Pie)
@@ -35,7 +35,7 @@ const detail = () => {
   }
   axios.post('/api/chartMng/detail', param).then(res => {
     const data12 = {
-      label: 'Data One',
+      label: '하자기간차트',
       data: [],
       backgroundColor: [
         'red',

@@ -38,8 +38,7 @@ export default defineComponent({
       }
     },
     type: {
-      type: Object,
-      default: Bar
+      type: Object
     }
   },
   setup (props) {

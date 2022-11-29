@@ -2,7 +2,10 @@ package com.sample.sampletest.service.impl;
 
 import com.sample.sampletest.DVO.ChartMngDetailVO;
 import com.sample.sampletest.DVO.ChartMngVO;
+import com.sample.sampletest.Repository.ChartMngRepo;
 import com.sample.sampletest.service.ChartMngService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +20,15 @@ public class ChartMngServiceImpl implements ChartMngService {
     @PersistenceContext
     private final EntityManager entityManager;
 
+    @Autowired
+    ChartMngRepo chartMngRepo;
+
 
     public ChartMngServiceImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
+
 
 
     @Override
@@ -28,7 +36,6 @@ public class ChartMngServiceImpl implements ChartMngService {
     public ChartMngVO search(String id) {
 
         StoredProcedureQuery spq = entityManager.createNamedStoredProcedureQuery("ChartMngVO.Select_Chart");
-
 
         spq.setParameter("CHART_ID",id);
         spq.execute();
@@ -52,4 +59,10 @@ public class ChartMngServiceImpl implements ChartMngService {
         return list;
     }
 
+    @Override
+    public List<ChartMngVO> select_box_search() {
+        List<ChartMngVO> list = chartMngRepo.findAll();
+
+        return list;
+    }
 }

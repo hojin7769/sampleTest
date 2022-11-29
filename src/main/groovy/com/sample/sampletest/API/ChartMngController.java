@@ -37,5 +37,10 @@ public class ChartMngController {
         return list;
     }
 
+    @PostMapping("/selectBoxSearch")
+    public List<ChartMngVO> select_box_search(@RequestBody(required = false) Map<String,Object> map){
+        return chartMngService.select_box_search();
+    }
+
 
 }

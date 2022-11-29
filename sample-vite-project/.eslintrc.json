@@ -17,6 +17,8 @@
         "vue"
     ],
     "rules": {
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "camelcase": "off",
+        "array-callback-return": "off"
     }
 }

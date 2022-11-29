@@ -46,7 +46,17 @@ export default defineComponent({
 
     const chartOptions = {
       responsive: true,
-      maintainAspectRatio: false
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: '하자기간 차트',
+          padding: {
+            top: 10,
+            bottom: 30
+          }
+        }
+      }
     }
 
     return () =>

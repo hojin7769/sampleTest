@@ -1,16 +1,17 @@
 <template>
   <div>
-    <PieChart :dataset = dataset />
+    <PieChart :dataset = dataset :type="type"/>
   </div>
-  {{dataset.datasets.label}}
 </template>
 
 <script setup>
 import PieChart from '../components/PIEChart'
 import { reactive, ref } from 'vue'
 import axios from 'axios'
+import { Pie, Bar } from 'vue-chartjs'
 
 const data = ref()
+const type = ref(Pie)
 const dataset = reactive({
   labels: [],
   datasets: []
@@ -21,10 +22,13 @@ const search = () => {
   }
   axios.post('/api/chartMng/search', param).then(res => {
     data.value = res.data
-    console.log(data.value)
+    if (res.data.chartshape === 'Bar') {
+      type.value = Bar
+    } else {
+      type.value = Pie
+    }
   })
 }
-
 const detail = () => {
   const param = {
     chart_id: 'chart01'

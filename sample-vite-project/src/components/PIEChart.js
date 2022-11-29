@@ -9,7 +9,7 @@ Chart.register(...registerables)
 export default defineComponent({
   name: 'PieChart',
   components: {
-    Pie
+    Bar, Pie
   },
   props: {
     chartId: {
@@ -36,6 +36,10 @@ export default defineComponent({
       type: Object,
       default: () => {
       }
+    },
+    type: {
+      type: Object,
+      default: Bar
     }
   },
   setup (props) {
@@ -60,7 +64,7 @@ export default defineComponent({
     }
 
     return () =>
-      h(Pie, {
+      h(props.type, {
         chartData,
         chartOptions,
         chartId: props.chartId,

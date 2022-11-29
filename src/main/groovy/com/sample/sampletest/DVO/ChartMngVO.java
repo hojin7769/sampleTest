@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @NamedStoredProcedureQuery(
@@ -22,7 +23,7 @@ import javax.persistence.*;
         parameters = { //저장 프로시저의 매개변수와 일치하는 매개변수 목록
                 @StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "CHART_ID"),
         },
-        resultClasses =ChartMngDetailVO.class
+        resultClasses = ChartMngDetailVO.class
 )
 @Entity
 @Data

@@ -8,32 +8,40 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 
 @Getter
 @Setter
 @Entity
-public class ChartMngDetailVO {
+public class ChartMngDetailVO implements Serializable {
+
+    private static final long serialVersionUID = 348348L;
 
     @Id
-    @GeneratedValue
-    private Long id;
-
-    @ElementCollection
     @Column(name = "C_LABEL")
-    private List<String> C_LABEL;
-    @ElementCollection
+    private String C_LABEL;
+
     @Column(name = "C_VALUE")
-    private List<String> C_VALUE;
+    private String C_VALUE;
 
     public ChartMngDetailVO() {
     }
 
-    public ChartMngDetailVO(List<String> c_LABEL, List<String> c_VALUE) {
+    public ChartMngDetailVO(String c_LABEL, String c_VALUE) {
         C_LABEL = c_LABEL;
         C_VALUE = c_VALUE;
+    }
+
+    @Override
+    public String toString() {
+        return "ChartMngDetailVO{" +
+                "C_LABEL='" + C_LABEL + '\'' +
+                ", C_VALUE='" + C_VALUE + '\'' +
+                '}';
     }
 }

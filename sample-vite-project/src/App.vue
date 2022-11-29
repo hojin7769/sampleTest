@@ -17,6 +17,7 @@
         <q-route-tab to="/about" label="Page Two" />
         <q-route-tab to="/chart" label="Page Three" />
         <q-route-tab to="/chart1" label="Page chart" />
+        <q-route-tab to="/pieChart" label="Pie Chart" />
       </q-tabs>
     </q-header>
 

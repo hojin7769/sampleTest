@@ -52,3 +52,13 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+springBoot {
+    mainClass  = "groovy.com.sample.sampletest.SampleTestApplication"
+}
+
+
+bootRun{
+    String activeProfile = System.properties['spring.profiles.active']
+    systemProperty "spring.profiles.active",activeProfile
+}

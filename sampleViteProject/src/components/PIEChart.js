@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue'
 
-import { Bar, Pie } from 'vue-chartjs'
+import { Pie, Bar, Line, Bubble, PolarArea, Doughnut, Radar, Scatter } from 'vue-chartjs'
 
 import { Chart, registerables } from 'chart.js'
 
@@ -9,7 +9,7 @@ Chart.register(...registerables)
 export default defineComponent({
   name: 'PieChart',
   components: {
-    Pie
+    Bar, Pie
   },
   props: {
     chartId: {
@@ -36,6 +36,9 @@ export default defineComponent({
       type: Object,
       default: () => {
       }
+    },
+    type: {
+      type: Object
     }
   },
   setup (props) {
@@ -46,11 +49,21 @@ export default defineComponent({
 
     const chartOptions = {
       responsive: true,
-      maintainAspectRatio: false
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: '하자기간 차트',
+          padding: {
+            top: 10,
+            bottom: 30
+          }
+        }
+      }
     }
 
     return () =>
-      h(Pie, {
+      h(props.type, {
         chartData,
         chartOptions,
         chartId: props.chartId,

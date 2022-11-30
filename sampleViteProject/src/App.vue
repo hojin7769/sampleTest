@@ -10,6 +10,13 @@
         <q-toolbar-title>
           my-first-site
         </q-toolbar-title>
+
+        <q-space />
+
+        <q-btn round icon="notifications" color="black" flat dense>
+          <q-badge floating color="red" rounded flat dense/>
+        </q-btn>
+        <q-btn flat round dense icon="more_vert" />
       </q-toolbar>
 
       <q-tabs align="left">

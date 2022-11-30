@@ -14,7 +14,6 @@ configurations {
         extendsFrom annotationProcessor
     }
     all {
-        //logback과의 충돌 방지
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
 }

@@ -54,8 +54,8 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-bootJar{
-    mainClassName = "com.sample.sampletest.SampleTestApplication"
+springBoot {
+    mainClass  = "groovy.com.sample.sampletest.SampleTestApplication"
 }
 
 

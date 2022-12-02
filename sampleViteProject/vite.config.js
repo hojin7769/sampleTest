@@ -58,7 +58,7 @@ export default ({ mode }) => {
       proxy: {
         '/api': {
           target:
-              env.APP_BACKEND == null ? 'http://localhost:8080' : env.APP_BACKEND,
+              env.APP_BACKEND == null ? 'http://localhost:9000' : env.APP_BACKEND,
           changeOrigin: true,
           secure: false
         }

@@ -16,7 +16,6 @@ import PieChart from '../components/PIEChart'
 import { reactive, ref } from 'vue'
 import axios from 'axios'
 import { Pie, Bar, Line, Bubble, PolarArea, Doughnut, Radar, Scatter } from 'vue-chartjs'
-
 const data = ref()
 const chart_id = ref('chart01')
 const type = ref(Pie)
@@ -86,7 +85,6 @@ const selectBoxSearch = () => {
     })
   })
 }
-
 const test = (newValue) => {
   chart_id.value = newValue.value
   search()

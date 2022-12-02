@@ -25,6 +25,8 @@
         <q-route-tab to="/chart" label="Page Three" />
         <q-route-tab to="/chart1" label="Page chart" />
         <q-route-tab to="/pieChart" label="Pie Chart" />
+        <q-route-tab to="/classChart" label="Class Chart" />
+        <q-route-tab to="/chartLine" label="Class Line" />
       </q-tabs>
     </q-header>
 

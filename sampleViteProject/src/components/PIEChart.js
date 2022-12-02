@@ -50,6 +50,8 @@ export default defineComponent({
     const chartOptions = {
       responsive: true,
       maintainAspectRatio: false,
+      showAllTooltips: true,
+      scaleShowLabelBackdrop: true,
       plugins: {
         title: {
           display: true,
@@ -57,6 +59,18 @@ export default defineComponent({
           padding: {
             top: 10,
             bottom: 30
+          }
+        }
+      },
+      tooltips: {
+        displayColors: false,
+        callbacks: {
+          title: function (tooltipItem, data) {
+
+          },
+          label: function (tooltipItem, data) {
+            // eslint-disable-next-line dot-notation
+            return data['labels'][tooltipItem['index']] + ':' + data.datasets[0]['data'][tooltipItem['index']];
           }
         }
       }

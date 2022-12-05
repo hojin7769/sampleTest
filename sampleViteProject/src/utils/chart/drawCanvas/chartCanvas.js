@@ -13,7 +13,7 @@ Chart.plugins.register({
 })
 
 const chartFixedTooltips = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ['January', 'February', 'March', 'April'],
     datasets: [{

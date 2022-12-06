@@ -11,8 +11,8 @@ import 'quasar/src/css/index.sass'
 
 import { createPinia } from 'pinia'
 
+const Vue = createApp(App);
 const pinia = createPinia()
-
-createApp(App).use(pinia).use(router).use(Quasar, {
+Vue.use(pinia).use(router).use(Quasar, {
   plugins: {} // import Quasar plugins and add here
 }).mount('#app')

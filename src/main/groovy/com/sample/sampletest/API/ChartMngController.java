@@ -3,6 +3,7 @@ package com.sample.sampletest.API;
 
 import com.sample.sampletest.DVO.ChartMngDetailVO;
 import com.sample.sampletest.DVO.ChartMngVO;
+import com.sample.sampletest.service.ChartDrawService;
 import com.sample.sampletest.service.ChartMngService;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,22 @@ public class ChartMngController {
     @Autowired
     private ChartMngService chartMngService;
 
-    @PostMapping("/search")
-    public ChartMngVO search(@RequestBody Map<String,Object> map){
+    @Autowired
+    private ChartDrawService chartDrawService;
 
-        String chartId = MapUtils.getString(map,"chart_id");
-        ChartMngVO vo =  chartMngService.search(chartId);
-        return vo;
+//    @PostMapping("/search")
+//    public ChartMngVO search(@RequestBody Map<String,Object> map){
+//
+//        String chartId = MapUtils.getString(map,"chart_id");
+//        ChartMngVO vo =  chartMngService.search(chartId);
+//        return vo;
+//    }
+
+    @PostMapping("/search")
+    public Map<String,Object> search(@RequestBody Map<String,Object> map){
+        return chartDrawService.chartDrawInfo(map);
     }
+
 
     @PostMapping("/detail")
     public List<ChartMngDetailVO> detail(@RequestBody Map<String,Object> map){

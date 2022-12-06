@@ -1,26 +1,19 @@
 <template>
-  <div id="div1223">
-    <button @click="changeValue('pie')">test</button>
-    <canvas id="canvasChart" width="500" height="500"></canvas>
+  <div id="tt">
+    <canvas id="myChart"></canvas>
   </div>
 </template>
 <script setup>
+import { onMounted } from "@vue/runtime-core";
 import { Chart } from "chart.js";
-import { onMounted, ref } from "vue";
+const props = defineProps(["data", "label"]);
 
-Chart.defaults.set("plugins.datalabels", {
-  color: "#FE777B",
-});
-
-const typeChart = ref("pie");
-const myChart = ref(null);
 onMounted(() => {
-  // alwaysShowTooltip plugins block
-  const ctx = document.getElementById("canvasChart");
-  makeChart(ctx);
+  const canvas = document.getElementById("myChart");
+  drawChartInCanvas(canvas, props.data, props.label);
 });
 
-function makeChart(mycanvas, data, labels) {
+function drawChartInCanvas(canvas, data, label) {
   const alwaysShowTooltip = {
     id: "alwaysShowTooltip",
     afterDraw(chart, args, options) {
@@ -30,7 +23,6 @@ function makeChart(mycanvas, data, labels) {
         chart.getDatasetMeta(i).data.forEach((datapoint, index) => {
           const { x, y } = datapoint.tooltipPosition();
 
-          //const text = ;
           const text =
             chart.data.labels[index] +
             " : " +
@@ -61,15 +53,15 @@ function makeChart(mycanvas, data, labels) {
       });
     },
   };
-  const ctx = mycanvas.getContext("2d");
-  myChart.value = new Chart(ctx, {
-    type: typeChart.value,
+  const ctx = canvas.getContext("2d");
+  const myChart = new Chart(ctx, {
+    type: "pie",
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: label,
       datasets: [
         {
           label: "# of Votes",
-          data: [12, 19, 3, 5, 2, 3],
+          data: data,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -91,6 +83,7 @@ function makeChart(mycanvas, data, labels) {
       ],
     },
     options: {
+      responsive: false,
       plugins: {
         title: {
           display: true,
@@ -106,16 +99,21 @@ function makeChart(mycanvas, data, labels) {
         legend: {
           display: false,
         },
+        labels: {
+          render: (arg) => {
+            return arg;
+          },
+        },
       },
     },
     plugins: [alwaysShowTooltip],
   });
 }
-
-function changeValue(value) {
-  typeChart.value = value;
-  myChart.value.destroy();
-  const ctx = document.getElementById("canvasChart");
-  makeChart(ctx);
-}
 </script>
+<style>
+canvas {
+  display: block;
+  width: 500px;
+  height: 500px;
+}
+</style>

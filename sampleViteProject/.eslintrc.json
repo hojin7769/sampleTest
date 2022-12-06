@@ -19,6 +19,9 @@
     "rules": {
         "no-unused-vars": "off",
         "camelcase": "off",
-        "array-callback-return": "off"
+        "array-callback-return": "off",
+        "semi": "off",
+        "accessor-pairs": "off",
+        "new-cap": "off"
     }
 }

@@ -1,84 +1,73 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h } from "vue";
+import { Pie } from "vue-chartjs";
 
-import { Bar } from 'vue-chartjs'
+import { Chart, registerables } from "chart.js";
 
-import { Chart, registerables } from 'chart.js'
-
-Chart.register(...registerables)
+Chart.register(...registerables);
 
 export default defineComponent({
-  name: 'BarChart',
+  name: "BarChart",
   components: {
-    Bar
+    Pie,
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: "bar-chart",
     },
     width: {
       type: Number,
-      default: 400
+      default: 400,
     },
     height: {
       type: Number,
-      default: 400
+      default: 400,
     },
     cssClasses: {
-      default: '',
-      type: String
+      default: "",
+      type: String,
     },
     styles: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
-  setup (props) {
+  setup(props) {
     const chartData = {
-      labels: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July'
-      ],
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [
         {
-          label: 'Data One',
-          backgroundColor: '#f87979',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-        }
+          label: "Data One",
+          backgroundColor: "#f87979",
+          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
+        },
       ],
-      options: {
-        plugins: {
-          datalabels: {
-            align: 'center',
-            formatter: function (value, context) {
-              // data 에 넣은 데이타 순번. 물론 0 부터 시작
-
-              const idx = context.dataIndex
-
-              // 여기선 첫번째 데이타엔 단위를 '원' 으로, 그 다음 데이타엔 'P' 를 사용
-
-              // addComma() 는 여기서 기술하지 않았지만, 천단위 세팅. ChartJS 의 data 엔 숫자만 입력
-
-              return context.chart.data.labels[idx] + value
-            }
-          }
-        }
-      }
-
-    }
+    };
 
     const chartOptions = {
       responsive: true,
-      maintainAspectRatio: false
-    }
-
+      maintainAspectRatio: false,
+      showAllTooltips: true,
+      scaleShowLabelBackdrop: true,
+      plugins: {
+        title: {
+          display: true,
+          text: "하자기간 차트",
+          padding: {
+            top: 10,
+            bottom: 30,
+          },
+        },
+        labels: {
+          display: true,
+          render: (args) => {
+            return args;
+          },
+        },
+      },
+    };
     return () =>
-      h(Bar, {
+      h(Pie, {
         chartData,
         chartOptions,
         chartId: props.chartId,
@@ -86,7 +75,6 @@ export default defineComponent({
         height: props.height,
         cssClasses: props.cssClasses,
         styles: props.styles,
-        plugins: props.plugins
-      })
-  }
-})
+      });
+  },
+});

@@ -1,5 +1,6 @@
 package com.sample.sampletest.dao;
 
+import org.apache.commons.collections4.MapUtils;
 import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.UncategorizedSQLException;
@@ -18,11 +19,11 @@ public class ChartDrawDAO {
     @Autowired
     DataSource dataSource;
 
-    public Map<String,Object> test(){
+    public Map<String,Object> chartDrawInfo(Map<String,Object> map){
         SimpleJdbcCall jdbcCall = new SimpleJdbcCall(dataSource);
 
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("CHART_ID", "chart01");
+        paramMap.put("CHART_ID", MapUtils.getString(map,"chart_id"));
 
         jdbcCall.withSchemaName("dbo");
         jdbcCall.withProcedureName("DZZPR_CHARTMNG_SELECT");

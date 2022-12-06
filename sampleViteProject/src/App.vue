@@ -4,17 +4,14 @@
 </script>
 <template>
   <q-layout view="hHh lpR fFf">
-
     <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar align="left">
-        <q-toolbar-title>
-          my-first-site
-        </q-toolbar-title>
+        <q-toolbar-title> my-first-site </q-toolbar-title>
 
         <q-space />
 
         <q-btn round icon="notifications" color="black" flat dense>
-          <q-badge floating color="red" rounded flat dense/>
+          <q-badge floating color="red" rounded flat dense />
         </q-btn>
         <q-btn flat round dense icon="more_vert" />
       </q-toolbar>
@@ -27,6 +24,7 @@
         <q-route-tab to="/pieChart" label="Pie Chart" />
         <q-route-tab to="/classChart" label="Class Chart" />
         <q-route-tab to="/chartLine" label="Class Line" />
+        <q-route-tab to="/drawchart" label="draw pie" />
       </q-tabs>
     </q-header>
 
@@ -38,13 +36,12 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar>
           <div>Title</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
-
   </q-layout>
 </template>
 <style scoped>

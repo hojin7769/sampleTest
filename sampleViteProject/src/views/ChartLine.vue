@@ -12,7 +12,7 @@ Chart.defaults.set("plugins.datalabels", {
   color: "#FE777B",
 });
 
-const typeChart = ref("bar");
+const typeChart = ref("pie");
 const myChart = ref(null);
 onMounted(() => {
   // alwaysShowTooltip plugins block

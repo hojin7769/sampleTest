@@ -1,18 +1,26 @@
 <template>
   <div id="div1223">
+    <button @click="changeValue('pie')">test</button>
     <canvas id="canvasChart" width="500" height="500"></canvas>
   </div>
 </template>
 <script setup>
 import { Chart } from "chart.js";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 Chart.defaults.set("plugins.datalabels", {
   color: "#FE777B",
 });
 
+const typeChart = ref("bar");
+const myChart = ref(null);
 onMounted(() => {
   // alwaysShowTooltip plugins block
+  const ctx = document.getElementById("canvasChart");
+  makeChart(ctx);
+});
+
+function makeChart(mycanvas, data, labels) {
   const alwaysShowTooltip = {
     id: "alwaysShowTooltip",
     afterDraw(chart, args, options) {
@@ -53,9 +61,9 @@ onMounted(() => {
       });
     },
   };
-  const ctx = document.getElementById("canvasChart").getContext("2d");
-  const myChart = new Chart(ctx, {
-    type: "pie",
+  const ctx = mycanvas.getContext("2d");
+  myChart.value = new Chart(ctx, {
+    type: typeChart.value,
     data: {
       labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
       datasets: [
@@ -84,6 +92,14 @@ onMounted(() => {
     },
     options: {
       plugins: {
+        title: {
+          display: true,
+          text: "하자기간 차트",
+          padding: {
+            top: 10,
+            bottom: 30,
+          },
+        },
         tooltip: {
           enabled: false,
         },
@@ -94,5 +110,12 @@ onMounted(() => {
     },
     plugins: [alwaysShowTooltip],
   });
-});
+}
+
+function changeValue(value) {
+  typeChart.value = value;
+  myChart.value.destroy();
+  const ctx = document.getElementById("canvasChart");
+  makeChart(ctx);
+}
 </script>

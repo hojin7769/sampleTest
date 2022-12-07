@@ -56,7 +56,7 @@ tasks.named('test') {
 }
 
 springBoot {
-    mainClass  = "groovy.com.sample.sampletest.SampleTestApplication"
+    mainClass  = "com.sample.sampletest.SampleTestApplication"
 }
 
 

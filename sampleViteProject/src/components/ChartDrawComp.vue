@@ -6,12 +6,19 @@
 <script setup>
 import { onMounted } from "@vue/runtime-core";
 import { Chart } from "chart.js";
-const props = defineProps(["data", "label"]);
+const props = defineProps(["data", "label", "type"]);
+var mychart;
+defineExpose({ getCanvas, drawChartInCanvas });
 
 onMounted(() => {
   const canvas = document.getElementById("myChart");
   drawChartInCanvas(canvas, props.data, props.label);
 });
+function getCanvas() {
+  mychart.config.type = "pie";
+  mychart.update();
+  return document.getElementById("myChart");
+}
 
 function drawChartInCanvas(canvas, data, label) {
   const alwaysShowTooltip = {
@@ -54,8 +61,8 @@ function drawChartInCanvas(canvas, data, label) {
     },
   };
   const ctx = canvas.getContext("2d");
-  const myChart = new Chart(ctx, {
-    type: "pie",
+  mychart = new Chart(ctx, {
+    type: props.type,
     data: {
       labels: label,
       datasets: [
@@ -113,7 +120,7 @@ function drawChartInCanvas(canvas, data, label) {
 <style>
 canvas {
   display: block;
-  width: 500px;
+  width: 600px;
   height: 500px;
 }
 </style>

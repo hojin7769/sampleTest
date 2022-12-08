@@ -33,6 +33,7 @@ public class ChartDrawDAO {
         } catch (UncategorizedSQLException e) {
             e.getMessage();
         }
+        System.out.println(result);
         return result;
     }
 

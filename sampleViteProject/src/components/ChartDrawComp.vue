@@ -14,8 +14,9 @@ onMounted(() => {
   const canvas = document.getElementById("myChart");
   drawChartInCanvas(canvas, props.data, props.label);
 });
-function getCanvas() {
-  mychart.config.type = "pie";
+function getCanvas(value) {
+  // mychart.config.type = String(value).toLowerCase();
+  mychart.config.type = "line";
   mychart.update();
   return document.getElementById("myChart");
 }
@@ -120,7 +121,7 @@ function drawChartInCanvas(canvas, data, label) {
 <style>
 canvas {
   display: block;
-  width: 600px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
 }
 </style>

@@ -86,7 +86,7 @@ detail();
 selectBoxSearch();
 const test = (newValue) => {
   chart_id.value = newValue.value;
-  testChart.value.getCanvas();
+  testChart.value.getCanvas(newValue.label);
   search();
   detail();
   // testChart.value.drawChartInCanvas(

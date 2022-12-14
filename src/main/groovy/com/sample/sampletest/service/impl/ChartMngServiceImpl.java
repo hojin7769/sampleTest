@@ -1,11 +1,10 @@
 package com.sample.sampletest.service.impl;
 
-import com.sample.sampletest.DVO.ChartMngDetailVO;
-import com.sample.sampletest.DVO.ChartMngVO;
+import com.sample.sampletest.dvo.ChartMngDetailVO;
+import com.sample.sampletest.dvo.ChartMngVO;
 import com.sample.sampletest.Repository.ChartMngRepo;
 import com.sample.sampletest.service.ChartMngService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

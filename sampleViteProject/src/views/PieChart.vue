@@ -24,7 +24,7 @@
           :columns="rows"
           row-key="index"
           hide-pagination
-          rows-per-page-options="0"
+          :rows-per-page-options="[0]"
           virtual-scroll
           style="height: 400px"
         />

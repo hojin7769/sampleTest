@@ -1,6 +1,5 @@
-package com.sample.sampletest.DVO;
+package com.sample.sampletest.dvo;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

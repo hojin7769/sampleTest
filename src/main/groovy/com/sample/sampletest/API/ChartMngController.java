@@ -1,8 +1,8 @@
 package com.sample.sampletest.API;
 
 
-import com.sample.sampletest.DVO.ChartMngDetailVO;
-import com.sample.sampletest.DVO.ChartMngVO;
+import com.sample.sampletest.dvo.ChartMngDetailVO;
+import com.sample.sampletest.dvo.ChartMngVO;
 import com.sample.sampletest.service.ChartDrawService;
 import com.sample.sampletest.service.ChartMngService;
 import org.apache.commons.collections4.MapUtils;

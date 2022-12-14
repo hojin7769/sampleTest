@@ -1,4 +1,4 @@
-package com.sample.sampletest.DVO;
+package com.sample.sampletest.dvo;
 
 import lombok.Builder;
 import lombok.Data;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @NamedStoredProcedureQuery(

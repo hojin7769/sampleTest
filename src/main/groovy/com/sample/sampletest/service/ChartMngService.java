@@ -1,7 +1,7 @@
 package com.sample.sampletest.service;
 
-import com.sample.sampletest.DVO.ChartMngDetailVO;
-import com.sample.sampletest.DVO.ChartMngVO;
+import com.sample.sampletest.dvo.ChartMngDetailVO;
+import com.sample.sampletest.dvo.ChartMngVO;
 
 import java.util.List;
 

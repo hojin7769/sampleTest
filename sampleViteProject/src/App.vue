@@ -25,6 +25,7 @@
         <q-route-tab to="/classChart" label="Class Chart" />
         <q-route-tab to="/chartLine" label="Class Line" />
         <q-route-tab to="/drawchart" label="draw pie" />
+        <q-route-tab to="/hajaTable" label="hajaTable pie" />
       </q-tabs>
     </q-header>
 

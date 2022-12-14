@@ -17,7 +17,7 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(ChartDataLabels, ...registerables);
 
 export default defineComponent({
-  name: 'PieChart',
+  name: 'drawChart',
   components: {
     Bar,
     Pie
@@ -76,10 +76,10 @@ export default defineComponent({
             return context.dataset.backgroundColor;
           },
           borderColor: 'white',
-          borderRadius: 10,
+          borderRadius: 30,
           borderWidth: 2,
           color: function (context) {
-            return 'black';
+            return 'white';
           },
           font: {
             weight: 'normal'

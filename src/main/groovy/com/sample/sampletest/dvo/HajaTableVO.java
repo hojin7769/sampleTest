@@ -9,7 +9,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class HajaTableVO {
 
     private int sn_seq;
@@ -22,8 +21,23 @@ public class HajaTableVO {
 
 
     @Builder
+    public HajaTableVO(){
+        chartCategoryVO = new ChartCategoryVO();
+    }
+    @Builder
+    public HajaTableVO(ChartCategoryVO chartCategoryVO) {
+        this.chartCategoryVO = chartCategoryVO;
+    }
+
+    @Builder
     public HajaTableVO(int sn_seq, String title, String desc_content, int seq_category) {
         this.sn_seq = sn_seq;
+        this.title = title;
+        this.desc_content = desc_content;
+        this.seq_category = seq_category;
+    }
+    @Builder
+    public HajaTableVO(String title, String desc_content, int seq_category) {
         this.title = title;
         this.desc_content = desc_content;
         this.seq_category = seq_category;

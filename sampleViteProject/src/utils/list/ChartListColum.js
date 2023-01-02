@@ -48,7 +48,7 @@ const tableColum = {
     {
       name: 'value',
       align: 'center',
-      label: '값',
+      label: '건수',
       field: 'value'
     }
   ]

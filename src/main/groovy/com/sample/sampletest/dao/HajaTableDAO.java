@@ -5,6 +5,7 @@ import com.sample.sampletest.dvo.HajaChartVO;
 import com.sample.sampletest.dvo.HajaTableVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -70,6 +71,70 @@ public class HajaTableDAO {
         });
         return list;
     }
+
+
+
+    public int save(ChartCategoryVO vo){
+
+        String sql = """
+                    insert into DZZT_CHARTCATEGORY (ID_CATEGORY,NM_CATEGORY,DT_INSERT,DESC_CATEGORY) 
+                    VALUES (:ID_CATEGORY,:NM_CATEGORY,GETDATE(),:DESC_CATEGORY)
+                """;
+
+
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource().addValue("ID_CATEGORY",vo.getID_CATEGORY())
+                .addValue("NM_CATEGORY",vo.getNM_CATEGORY())
+                .addValue("DESC_CATEGORY",vo.getDESC_CATEGORY());
+
+
+        int i = jdbcTemplate.update(sql,parameterSource);
+        return i;
+    }
+
+    public List<ChartCategoryVO> selectListCategory(){
+        String sql = """
+                    SELECT SN_SEQ,ID_CATEGORY,NM_CATEGORY,DESC_CATEGORY,RM_BIGO,DT_INSERT,DT_UPDATE
+                    FROM DZZT_CHARTCATEGORY
+                """;
+
+        List<ChartCategoryVO> list = new ArrayList<>();
+
+        list = jdbcTemplate.query(sql, new RowMapper<ChartCategoryVO>() {
+            @Override
+            public ChartCategoryVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+                ChartCategoryVO vo = new ChartCategoryVO();
+                vo.setSN_SEQ(rs.getInt("SN_SEQ"));
+                vo.setID_CATEGORY(rs.getString("ID_CATEGORY"));
+                vo.setNM_CATEGORY(rs.getString("NM_CATEGORY"));
+                vo.setDESC_CATEGORY(rs.getString("DESC_CATEGORY"));
+                vo.setDT_INSERT(rs.getString("DT_INSERT"));
+                vo.setRM_BIGO(rs.getString("RM_BIGO"));
+                vo.setDT_UPDATE(rs.getString("DT_UPDATE"));
+                return vo;
+            }
+        });
+        return list;
+    }
+
+
+    public int saveHajaTable(HajaTableVO vo){
+
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource().addValue("TITLE",vo.getTitle())
+                .addValue("DESC_CONTENT",vo.getDesc_content())
+                .addValue("SEQ_CATEGORY",vo.getSeq_category());
+
+        String sql = """
+                INSERT INTO haja_TABLE(TITLE,DESC_CONTENT,SEQ_CATEGORY,DT_INSERT) VALUES(:TITLE,:DESC_CONTENT,:SEQ_CATEGORY,GETDATE())
+                """;
+
+        int i = jdbcTemplate.update(sql,parameterSource);
+        return i;
+
+    }
+
+
+
+
 
 
 }

@@ -20,7 +20,8 @@ export default defineComponent({
   name: 'PieChart',
   components: {
     Bar,
-    Pie
+    Pie,
+    Line
   },
   props: {
     chartId: {
@@ -52,6 +53,25 @@ export default defineComponent({
     }
   },
   setup (props) {
+    function ChooseType (value) {
+      let typeData = null
+      switch (value) {
+        case 'bar':
+          typeData = Bar
+          break
+        case 'pie':
+          typeData = Pie
+          break
+        case 'line':
+          typeData = Line
+          break
+        default:
+          typeData = Doughnut
+          break
+      }
+      return typeData
+    }
+    const Type = ChooseType(props.type)
     const chartData = {
       labels: props.dataset.labels,
       datasets: props.dataset.datasets
@@ -60,14 +80,6 @@ export default defineComponent({
       responsive: false,
       maintainAspectRatio: false,
       plugins: {
-        title: {
-          display: true,
-          text: '하자기간 차트',
-          padding: {
-            top: 10,
-            bottom: 30
-          }
-        },
         legend: {
           display: false
         },
@@ -108,14 +120,14 @@ export default defineComponent({
             const idx = context.dataIndex;
             // 여기선 첫번째 데이타엔 단위를 '원' 으로, 그 다음 데이타엔 'P' 를 사용
             // addComma() 는 여기서 기술하지 않았지만, 천단위 세팅. ChartJS 의 data 엔 숫자만 입력
-            return context.chart.data.labels[idx];
+            return context.chart.data.labels[idx] + ' : ' + value
           }
         }
       }
     };
 
     return () =>
-      h(props.type === 'pie' ? Pie : Bar, {
+      h(Type, {
         chartData,
         chartOptions,
         chartId: props.chartId,

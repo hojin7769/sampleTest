@@ -25,4 +25,10 @@ public class ChartCategoryVO {
         this.NM_CATEGORY = NM_CATEGORY;
     }
 
+    public ChartCategoryVO(String ID_CATEGORY, String NM_CATEGORY, String DESC_CATEGORY) {
+        this.ID_CATEGORY = ID_CATEGORY;
+        this.NM_CATEGORY = NM_CATEGORY;
+        this.DESC_CATEGORY = DESC_CATEGORY;
+    }
+
 }
